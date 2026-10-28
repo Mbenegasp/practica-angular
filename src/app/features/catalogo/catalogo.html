@@ -1,1 +1,10 @@
-<p>catalogo works!</p>
+<ul class="tarjetas">
+  @for (pantalon of pantalones(); track pantalon.id) {
+    <li>
+      <app-card
+        [pantalon]="pantalon"
+        (navigationRequested)="router.navigate(['/catalogo', pantalon.id])"
+      />
+    </li>
+  }
+</ul>

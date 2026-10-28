@@ -1,0 +1,16 @@
+:host{
+    display:grid;
+    grid-template-areas: 
+    'header'
+    'main';
+    grid-template-rows: 4rem 1fr;
+    min-height: 100vh;
+}
+
+.main-content{
+    grid-area: main;
+}
+
+.encabezado{
+    grid-area: header;
+}

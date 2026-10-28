@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
+import { PantalonModel } from '../../model/pantalon-model';
 
 @Component({
   imports: [],
@@ -6,4 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './card.css',
   templateUrl: './card.html',
 })
-export class Card {}
+export class Card {
+  readonly pantalon = input.required<PantalonModel>();
+  readonly navigationRequested = output;
+}
