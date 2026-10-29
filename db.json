@@ -44,6 +44,15 @@
       "size": "S",
       "cut": "Slim",
       "notes": "Tiro medio. Ideal para ocasiones formales. Requiere limpieza en seco."
+    },
+    {
+      "modelName": "Chingon rojo",
+      "salePrice": 123123,
+      "isInStore": true,
+      "size": "M",
+      "cut": "Slim",
+      "notes": "Pantalon rojo gastado",
+      "id": "mmm_-3lGTUY"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

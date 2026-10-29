@@ -1,8 +1,8 @@
-export const CUTS = ['XS', 'S', 'M', 'L', 'XL'] as const;
-export type Cut = (typeof CUTS)[number];
-
-export const SIZES = ['Recto', 'Slim', 'Oxford', 'Skinny', 'Cargo', 'Jogger']
+export const SIZES = ['XS', 'S', 'M', 'L', 'XL'] as const;
 export type Size = (typeof SIZES)[number];
+
+export const CUTS = ['Recto', 'Slim', 'Oxford', 'Skinny', 'Cargo', 'Jogger'] as const
+export type Cut = (typeof CUTS)[number];
 
 
 export interface PantalonModel {
@@ -15,5 +15,8 @@ export interface PantalonModel {
   notes: string;
 }
 
-export type PantalonForm = Omit<PantalonModel, 'id'>;
+export type PantalonForm = Omit<PantalonModel, 'id' | 'size' | 'cut'> &{
+  size: Size | '';
+  cut: Cut | '';
+};
 

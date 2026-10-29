@@ -1,1 +1,52 @@
-<p>form works!</p>
+<h3>Agregando Pantalones</h3>
+
+<form [formRoot]="formulario">
+  <div class="control">
+    <label for="modelName">Modelo</label>
+    <input type="text" id="modelName" [formField]="formulario.modelName" />
+    @if (formulario.modelName().invalid() && formulario.modelName().touched()) {
+      <span class="errors">{{ formulario.modelName().errors()[0].message }}</span>
+    }
+  </div>
+  <div class="control">
+    <label for="salePrice">Precio de venta</label>
+    <input type="number" id="salePrice" [formField]="formulario.salePrice" />
+    @if (formulario.salePrice().invalid() && formulario.salePrice().touched()) {
+      <span class="errors">{{ formulario.salePrice().errors()[0].message }}</span>
+    }
+  </div>
+  <div class="control">
+    <label for="isInStore">Disponible en tienda</label>
+    <input type="checkbox" id="isInStore" [formField]="formulario.isInStore" />
+  </div>
+  <div class="control">
+    <label for="size">Talle</label>
+    @for (s of sizes; track $index) {
+      {{ s }}
+      <input type="radio" [value]="s" [formField]="formulario.size" id="size" />
+    }
+    @if (formulario.size().invalid() && formulario.size().dirty()) {
+      <span>{{ formulario.size().errors()[0].message }}</span>
+    }
+  </div>
+  <div class="control">
+    <label for="cut">Corte</label>
+    <select id="cut" [formField]="formulario.cut">
+      <option value="">Seleccione el corte</option>
+      @for (c of cuts; track $index) {
+        <option [value]="c">{{ c }}</option>
+      }
+    </select>
+    @if (formulario.cut().invalid() && formulario.cut().touched()) {
+      <span>{{ formulario.cut().errors()[0].message }}</span>
+    }
+  </div>
+  <div class="control">
+    <label for="notes">Notas:</label>
+    <textarea name="notes" id="notes" [formField]="formulario.notes" placeholder="Tela denim pesada, 100% algodon..."></textarea>
+  </div>
+  <div class="actions">
+    <button type="submit">Guardar Pantalon</button>
+    <button type="reset" (click)="resetForm()">Restablecer formulario</button>
+  </div>
+</form>
