@@ -1,9 +1,11 @@
-<ul class="tarjetas">
+<h2>Catalogo</h2>
+
+<ul class="tarjetas-container">
   @for (pantalon of pantalones(); track pantalon.id) {
     <li>
       <app-card
         [pantalon]="pantalon"
-        (navigationRequested)="router.navigate(['/catalogo', pantalon.id])"
+        (navigationRequested)="router.navigate(['/detalle', pantalon.id])"
       />
     </li>
   }

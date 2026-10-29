@@ -1,1 +1,14 @@
-<p>details works!</p>
+@let p =pantalon();
+
+@if (p) {
+    <h3>{{ p.modelName }}</h3>
+    <p>Talle{{ p.size }} | Corte {{ p.cut }}</p>
+    <p>Precio de venta: ${{ p.salePrice }}</p>
+    <p>{{ p.isInStore ? 'Disponible en tienda' : 'No esta disponible'}}</p>
+    <h4>Observaciones</h4>
+    <p>{{ p.notes }}</p>
+    <button type="button" (click)="borrarPantalon()">Borrar</button>
+    <button>Editar</button>
+}@else {
+    <h4>No hay nada papu</h4>
+}

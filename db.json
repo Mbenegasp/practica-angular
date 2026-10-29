@@ -1,15 +1,6 @@
 {
   "trousers": [
     {
-      "id": "1r1g",
-      "modelName": "Jeans Clásico 501",
-      "salePrice": 79.99,
-      "isInStore": true,
-      "size": "XS",
-      "cut": "Recto",
-      "notes": "Tela denim pesada, 100% algodón. Clásico atemporal."
-    },
-    {
       "id": "1p2l",
       "modelName": "Pantalón Chino Delgado",
       "salePrice": 55.5,
@@ -54,5 +45,6 @@
       "cut": "Slim",
       "notes": "Tiro medio. Ideal para ocasiones formales. Requiere limpieza en seco."
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
