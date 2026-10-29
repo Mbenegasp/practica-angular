@@ -1,3 +1,4 @@
 @let p = pantalon();
 
-<p>{{ p.modelName }}</p>
+<span>{{ p.modelName }} | {{ p.size }} | ${{ p.salePrice }}</span>
+<button (click)="navigationRequested.emit()">ver detalles &rarr;</button>

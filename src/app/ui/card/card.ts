@@ -9,5 +9,5 @@ import { PantalonModel } from '../../model/pantalon-model';
 })
 export class Card {
   readonly pantalon = input.required<PantalonModel>();
-  readonly navigationRequested = output;
+  readonly navigationRequested = output();
 }
