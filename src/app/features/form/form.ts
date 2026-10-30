@@ -1,5 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
-import { CUTS, PantalonForm, SIZES } from '../../model/pantalon-model';
+import { Component, inject, OnInit, signal, input, output } from '@angular/core';
+import { CUTS, PantalonForm, PantalonModel, SIZES } from '../../model/pantalon-model';
 import { form, FormField, FormRoot, min, required } from '@angular/forms/signals';
 import { firstValueFrom } from 'rxjs';
 import { PantalonService } from '../../services/pantalon-service';
@@ -10,10 +10,12 @@ import { PantalonService } from '../../services/pantalon-service';
   styleUrl: './form.css',
   templateUrl: './form.html',
 })
-export class Form {
+export class Form implements OnInit{
   private readonly pantalonService = inject(PantalonService);
   protected readonly cuts = CUTS;
   protected readonly sizes = SIZES;
+  readonly pantalon = input<PantalonModel>();
+  readonly editado = output<PantalonModel>();
 
   private readonly formularioVacio: PantalonForm = {
     modelName: '',
@@ -25,6 +27,13 @@ export class Form {
   };
 
   private readonly formularioModelo = signal({ ...this.formularioVacio });
+
+  ngOnInit() {
+    const pantalon = this.pantalon()
+    if(pantalon){
+      this.formularioModelo.set({...pantalon});
+    }
+  }
 
   protected readonly formulario = form(
     this.formularioModelo,
@@ -39,9 +48,17 @@ export class Form {
     {
       submission: {
         action: async (fieldTree) => {
-          await firstValueFrom(this.pantalonService.add(fieldTree().value()));
-          alert('Producto agregado muy satisfactoriamente');
-          this.resetForm();
+          const pantalon = fieldTree().value();
+          const pantalonEnEdicion = this.pantalon()
+          if (pantalonEnEdicion){
+            const pantalonActualizado = await firstValueFrom(this.pantalonService.update(pantalon, pantalonEnEdicion.id));
+            this.editado.emit(pantalonActualizado);
+            alert('Pantalon editado muy exitosamente, me hace feliz lo exitoso que esta esto')
+          } else {
+            await firstValueFrom(this.pantalonService.add(fieldTree().value()));
+            alert('Producto agregado muy satisfactoriamente');
+            this.resetForm();
+          }
         },
         onInvalid: () => {
           alert('Formulario invalido papuchu');
@@ -49,6 +66,7 @@ export class Form {
       },
     },
   );
+
   resetForm() {
     this.formulario().reset({ ...this.formularioVacio });
   }

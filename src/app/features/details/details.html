@@ -7,8 +7,12 @@
     <p>{{ p.isInStore ? 'Disponible en tienda' : 'No esta disponible'}}</p>
     <h4>Observaciones</h4>
     <p>{{ p.notes }}</p>
-    <button type="button" (click)="borrarPantalon()">Borrar</button>
-    <button>Editar</button>
+    <button type="button" (click)="borrarPantalon()" [disabled]="estaEditado()">Borrar</button>
+    <button type="button" (click)="estaEditado.update(v => !v)">Editar</button>
 }@else {
     <h4>No hay nada papu</h4>
+}
+
+@if (estaEditado()) {
+    <app-form [pantalon]="p" (editado)="editarPantalon($event)"></app-form>
 }
