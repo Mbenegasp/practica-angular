@@ -26,7 +26,7 @@
       <input type="radio" [value]="s" [formField]="formulario.size" id="size" />
     }
     @if (formulario.size().invalid() && formulario.size().dirty()) {
-      <span>{{ formulario.size().errors()[0].message }}</span>
+      <span class="errors">{{ formulario.size().errors()[0].message }}</span>
     }
   </div>
   <div class="control">
@@ -38,12 +38,15 @@
       }
     </select>
     @if (formulario.cut().invalid() && formulario.cut().touched()) {
-      <span>{{ formulario.cut().errors()[0].message }}</span>
+      <span class="errors">{{ formulario.cut().errors()[0].message }}</span>
     }
   </div>
   <div class="control">
     <label for="notes">Notas:</label>
-    <textarea name="notes" id="notes" [formField]="formulario.notes" placeholder="Tela denim pesada, 100% algodon..."></textarea>
+    <textarea id="notes" [formField]="formulario.notes" placeholder="Tela denim pesada, 100% algodon..."></textarea>
+    @if (formulario.notes().invalid() && formulario.notes().touched()) {
+      <span class="errors">{{ formulario.notes().errors()[0].message }}</span>
+    }
   </div>
   <div class="actions">
     <button type="submit">Guardar Pantalon</button>
