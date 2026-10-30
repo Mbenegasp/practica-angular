@@ -1,0 +1,43 @@
+:host{
+    display:block;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+h3{
+    text-align: center;
+}
+
+textarea{
+    height: 100px;
+    resize: none;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.control{
+    width: 100%;
+}
+
+input[type='text'],
+input[type='number'],
+select,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.actions{
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.errors{
+    color:var(--font-error-color)
+}

@@ -1,0 +1,17 @@
+:host{
+    display: block;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.detalle{
+    border: 1px solid black;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.boton{
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}

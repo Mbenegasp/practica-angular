@@ -1,16 +1,27 @@
-:host{
-    display:grid;
-    grid-template-areas: 
+
+
+:host {
+  display: grid;
+  grid-template-areas:
     'header'
     'main';
-    grid-template-rows: 4rem 1fr;
-    min-height: 100vh;
+  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+  color: var(--font-color);
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.main-content{
-    grid-area: main;
+.main-content {
+  grid-area: main;
+  background-color: var(--background-color);
 }
 
-.encabezado{
-    grid-area: header;
+.encabezado {
+  grid-area: header;
+}
+
+footer{
+    text-align: center;
+    background-color: var(--background-darker-color);
+    min-height: 4rem;
 }

@@ -1,18 +1,22 @@
-@let p =pantalon();
+@let p = pantalon();
 
 @if (p) {
+  <div class="detalle">
     <h3>{{ p.modelName }}</h3>
     <p>Talle {{ p.size }} | Corte {{ p.cut }}</p>
     <p>Precio de venta: ${{ p.salePrice }}</p>
-    <p>{{ p.isInStore ? 'Disponible en tienda' : 'No esta disponible'}}</p>
+    <p>{{ p.isInStore ? 'Disponible en tienda' : 'No esta disponible' }}</p>
     <h4>Observaciones</h4>
     <p>{{ p.notes }}</p>
-    <button type="button" (click)="borrarPantalon()" [disabled]="estaEditado()">Borrar</button>
-    <button type="button" (click)="estaEditado.update(v => !v)">Editar</button>
-}@else {
-    <h4>No hay nada papu</h4>
+    <div class="boton">
+        <button type="button" (click)="borrarPantalon()" [disabled]="estaEditado()">Borrar</button>
+        <button type="button" (click)="estaEditado.update((v) => !v)">Editar</button>
+    </div>
+  </div>
+} @else {
+  <h4>No hay nada papu</h4>
 }
 
 @if (estaEditado()) {
-    <app-form [pantalon]="p" (editado)="editarPantalon($event)"></app-form>
+  <app-form [pantalon]="p" (editado)="editarPantalon($event)"></app-form>
 }
