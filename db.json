@@ -53,6 +53,15 @@
       "cut": "Slim",
       "notes": "Pantalon rojo gastado",
       "id": "mmm_-3lGTUY"
+    },
+    {
+      "modelName": "tiago sucio anda a bañarte",
+      "salePrice": 50,
+      "isInStore": true,
+      "size": "M",
+      "cut": "Jogger",
+      "notes": "Tiago no se baña desde que existen los tiranosaurios",
+      "id": "6iK-mL8PxrE"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

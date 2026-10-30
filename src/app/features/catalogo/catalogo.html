@@ -1,7 +1,37 @@
 <h2>Catalogo</h2>
 
+<div class="panelDeFiltrado">
+  <div class="filtrado">
+    <label for="categoria">filtrado por categoria</label>
+    <select
+      id="categoria"
+      #categoriaSeleccionada
+      [value]="filtro()"
+      (change)="filtro.set(categoriaSeleccionada.value)"
+    >
+      <option value="">todas las categorias</option>
+      @for (c of cuts; track $index) {
+        <option [value]="c">
+          {{ c }}
+        </option>
+      }
+    </select>
+  </div>
+  <div class="filtrado">
+    <label for="ordenamiento">Ordenar por precio</label>
+    <select id="ordenamiento"
+    #ordenamientoSeleccionado
+    [value]="ordenamiento()"
+    (change)="ordenamiento.set(ordenamientoSeleccionado.value)">
+    <option value="asc">Orden ascendente</option>
+    <option value="desc">Orden descendente</option>
+    <option value="">Sin orden en particular</option>
+  </select>
+  </div>
+</div>
+
 <ul class="tarjetas-container">
-  @for (pantalon of pantalones(); track pantalon.id) {
+  @for (pantalon of pantalonesFiltrados(); track pantalon.id) {
     <li>
       <app-card
         [pantalon]="pantalon"

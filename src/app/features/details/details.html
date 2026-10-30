@@ -2,7 +2,7 @@
 
 @if (p) {
     <h3>{{ p.modelName }}</h3>
-    <p>Talle{{ p.size }} | Corte {{ p.cut }}</p>
+    <p>Talle {{ p.size }} | Corte {{ p.cut }}</p>
     <p>Precio de venta: ${{ p.salePrice }}</p>
     <p>{{ p.isInStore ? 'Disponible en tienda' : 'No esta disponible'}}</p>
     <h4>Observaciones</h4>
